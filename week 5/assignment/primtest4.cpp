@@ -107,7 +107,7 @@ void Graph::prim(){
 
 int main()
 {
-/*    int n;
+    int n;
     vertex vert;
     cin>>n;
     Graph g;
@@ -117,19 +117,7 @@ int main()
         g.v.push_back(vert);
     }
     g.prim();
-*/
 
-	int n=50000000;
-	Graph g;
-	vertex vert;
-	g.create(n);
-	for(int i=-1000;i<1000;i+=200){
-		for(int j=-1000;j<1000 && i!=j ;j+=100){
-			vert.x=i;vert.y=j;
-			g.v.push_back(vert);
-		}
-	}
-	g.prim();
     return 0;
 }
 
