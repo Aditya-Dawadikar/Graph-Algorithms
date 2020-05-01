@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 #include <cmath>
 
+
 using namespace std;
 
 struct vertex{
@@ -71,9 +72,13 @@ void Graph::prim(){
 	visited[0]=true;
 	priority_queue< element, vector <element> , greater<element> > pq,parent;
 	pq.push(make_pair(0,0));
+	int u;
+	double di;
 		while(!pq.empty() && !alldone()){
-			int u;
 			u=pq.top().second;
+			di=pq.top().first;
+			//cout<<"current vertex:"<<u<<endl;
+			//cout<<"current min:"<<di<<endl;
 			pq.pop();
 					
 			for(int j=0;j<V;j++){
@@ -81,14 +86,17 @@ void Graph::prim(){
 					d=dist(v[u],v[j]);
 					if(distance[j]>=d){
 						distance[j]=d;
-						parent.push(make_pair(d,j));
 					}	
+					parent.push(make_pair(d,j));
 				}
 			}
 			
 			int verid=parent.top().second;
 			double verdis=parent.top().first;
 			visited[verid]=true;
+			
+			//cout<<"current parent top min id:"<<verid<<endl;
+			//cout<<"current parent top min distance:"<<verdis<<endl;
 			
 			pq.push(make_pair(verdis,verid));
 			
@@ -102,7 +110,11 @@ void Graph::prim(){
 		for(int i=0;i<V;i++){
 			min+=distance[i];
 		}
-		cout<<fixed<<setprecision(10)<<min<<endl;
+		//cout<<fixed<<min<<endl;
+		//cout.setf( ios_base::fixed, ios_base::floatfield );
+    	//cout.precision( 20 );
+    	//cout<<setprecision(6)<<min<< endl;
+		cout<<fixed<<setprecision(8) <<min<< endl;
 }
 
 int main()
